@@ -106,8 +106,10 @@
   3. send input to robot via ROS untill get closed to goal position within tolerance (0.02 meter in this code)
   
   </br>
- ## Result clip using Gazebo
- </br>
-<p align="center">
+## Result clip using Gazebo
+</br>
+  <p align="center">
   <img src="https://github.com/engcang/image-files/blob/master/turtlebot2/kinematic_1coma1.gif" width="500"/>
-</p>
+  </p>
+  </br>
+  Robot moves to (1,1) position from origin untill close enough
