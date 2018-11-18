@@ -6,7 +6,7 @@
   + Modelling uses velocity input which is proved stable by Lyapunov stability
 
 ### Nessecary
-+ <Robotics System Toolbox>
++ [<Robotics System Toolbox>](https://kr.mathworks.com/help/robotics/classeslist.html)
 + <Robotics System Toolbox Support Package for Turtlebot-Based Robots>
 ## Code breaking down
     rosinit('192.168.0.10'); % type your robot's IP
@@ -19,4 +19,4 @@
     odom = rossubscriber('/odom');
 
 This block initialize ROS connection and make nodes subscribes and publishes the messages under topics
-
+<img src="https://github.com/engcang/image-files/turtlebot2/rqt1.jpg" width="200" position="center">
