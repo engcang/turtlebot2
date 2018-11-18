@@ -99,8 +99,15 @@
   end
   ~~~
   </br>
-  Using the modelling of the paper above, calculated the input by rho(distance between robot and goal position) and phi (subtraction between robot direction and direction from origin to goal position under World coordinate)
-  and then saturate the input into bound which is the hardware specification of Turtlebot2
+  1. Using the modelling of the paper above, calculated the input by rho(distance between robot and goal position) and phi (subtraction between robot direction and direction from origin to goal position under World coordinate)
+  
+  2. and then saturate the input into bound which is the hardware specification of Turtlebot2
+  
+  3. send input to robot via ROS untill get closed to goal position within tolerance (0.02 meter in this code)
+  
+  </br>
+ ## Result clip using Gazebo
+ </br>
 <p align="center">
   <img src="https://github.com/engcang/image-files/blob/master/turtlebot2/kinematic_1coma1.gif" width="500"/>
 </p>
