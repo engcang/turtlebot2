@@ -14,7 +14,7 @@
 </br></br>
 ## Code breaking down
 
-1. ROS connection :
++ ROS connection :
 
   ~~~
   rosinit('192.168.0.10'); % type your robot's IP
@@ -33,7 +33,7 @@
   </p>
 
   </br></br>
-2. System Parameters :
++ System Parameters :
 
   ~~~
   K1=2;
@@ -45,3 +45,53 @@
   ~~~
   Input Gains K1 and K2 can differ how fast the robot will move
   xt and yt is Goal position in X-Y 2D axes system
+  </br>
+
++ Calculating input :
+  ~~~
+  while 1
+  if rho >=0.02
+    rho=sqrt((xt-Ax)^2+(yt-Ay)^2);
+    psi=atan2(yt-Ay,xt-Ax);
+    phi=theta-psi;
+        if phi > pi
+        phi = phi - 2*pi;
+    end
+    if phi < -pi
+        phi = phi + 2*pi;
+    end % for robot angle range
+
+    velmsg.Linear.X = K1*rho*cos(phi);
+    velmsg.Angular.Z = -K1*sin(phi)*cos(phi)-K2*phi;
+
+    if velmsg.Linear.X >= 0.7
+        velmsg.Linear.X=0.7;
+    end
+    if velmsg.Linear.X <= -0.7
+        velmsg.Linear.X=-0.7;
+    end
+    if velmsg.Angular.Z >= 2
+        velmsg.Linear.Z=2;
+    end
+    if velmsg.Angular.Z <= -2
+        velmsg.Angular.Z=-2;
+    end % saturation for robot velocity maximum range
+    
+    send(robot,velmsg); %sending input into real robot via ROS
+    
+    odomdata = receive(odom,3);
+    pose = odomdata.Pose.Pose;
+    Ax = pose.Position.X;
+    Ay = pose.Position.Y;
+    quat = pose.Orientation;
+    angles = quat2eul([quat.W quat.X quat.Y quat.Z]);
+    theta = angles(1);  %update robot's position information
+  else
+    velmsg.Linear.X=0;
+    velmsg.Angular.Z=0;
+    send(robot,velmsg);
+    break;
+  end
+  end
+  ~~~
+  
