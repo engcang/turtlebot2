@@ -7,4 +7,12 @@
 
 
 ## Code breaking down
-  code test
+    rosinit('192.168.0.10'); % type your robot's IP
+    tbot = turtlebot;
+    resetOdometry(tbot); % Reset robot's Odometry
+    
+    robot = rospublisher('/mobile_base/commands/velocity');
+    velmsg = rosmessage(robot);
+    
+    odom = rossubscriber('/odom');
+> rosinit('IP')
