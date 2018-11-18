@@ -45,7 +45,8 @@
   ~~~
   Input Gains K1 and K2 can differ how fast the robot will move
   xt and yt is Goal position in X-Y 2D axes system
-  </br>
+
+</br></br>
 
 + Calculating input :
   ~~~
@@ -94,4 +95,4 @@
   end
   end
   ~~~
-  
+</br>
