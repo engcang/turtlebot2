@@ -14,7 +14,7 @@
 </br></br>
 ## Code breaking down
 
-+ ROS connection :
+1. ROS connection :
 
   ~~~
   rosinit('192.168.0.10'); % type your robot's IP
@@ -33,7 +33,7 @@
   </p>
 
   </br></br>
-+ System Parameters :
+2. System Parameters :
 
   ~~~
   K1=2;
