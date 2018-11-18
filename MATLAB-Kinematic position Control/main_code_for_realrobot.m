@@ -3,8 +3,6 @@
     clear 
     close all
     
-%     rosinit('192.168.47.129');
-%     rosinit('155.230.94.28');
     rosinit('192.168.0.10');
     tbot = turtlebot;
     tbot.OdometryReset.TopicName = '/reset';
