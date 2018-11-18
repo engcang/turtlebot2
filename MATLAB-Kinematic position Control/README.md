@@ -6,7 +6,7 @@
   + Modelling uses velocity input which is proved stable by Lyapunov stability
 
 ### Nessecary
-+ ['<'Robotics System Toolbox'>'](https://kr.mathworks.com/help/robotics/classeslist.html)
++ [< Robotics System Toolbox >](https://kr.mathworks.com/help/robotics/classeslist.html)
 + <Robotics System Toolbox Support Package for Turtlebot-Based Robots>
 ## Code breaking down
     rosinit('192.168.0.10'); % type your robot's IP
