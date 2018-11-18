@@ -13,10 +13,9 @@
 
 ## Code breaking down
 + ROS connection :
-> ~~~
-rosinit('192.168.0.10'); % type your robot's IP
+> <pre><code>rosinit('192.168.0.10'); % type your robot's IP
 tbot = turtlebot;
-resetOdometry(tbot); % Reset robot's Odometry
+resetOdometry(tbot); % Reset robot's Odometry</code></pre>
 
 robot = rospublisher('/mobile_base/commands/velocity');
 velmsg = rosmessage(robot);
