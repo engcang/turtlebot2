@@ -1,5 +1,7 @@
 # Controlling the real robot
 + Controlling the real robot via ROS into wanted position using kinematic error modeling's input velocities
++ Please attach github URL when you use my code!
+
 </br></br>
 ### Robot - Turtlebot2
 + [Turtlebot2](https://www.turtlebot.com/turtlebot2/)
