@@ -7,7 +7,7 @@
 
 
 ## Code breaking down
-    rosinit('192.168.0.10'); % type your robot's IP
+>    rosinit('192.168.0.10'); % type your robot's IP
     tbot = turtlebot;
     resetOdometry(tbot); % Reset robot's Odometry
     
