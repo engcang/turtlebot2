@@ -23,6 +23,7 @@
   import numpy as np 
   ~~~
   #!/usr/bin/env python teaches terminal what kind of script source we will run
+  
   You should import [ROS message types](http://wiki.ros.org/ROS/Tutorials/UnderstandingTopics) as library
   
   </br></br>
