@@ -1,5 +1,7 @@
 # Controlling the real robot
 + Controlling the real robot via ROS into wanted position using kinematic error modeling's input velocities
++ Please attach github URL when you use my code!
+
 </br></br>
 ### Robot - Turtlebot2
 + [Turtlebot2](https://www.turtlebot.com/turtlebot2/)
@@ -15,7 +17,20 @@
 
 </br></br>
 ## Code breaking down
-
++ Libraries
+  ~~~
+  #!/usr/bin/env python
+  import rospy
+  from geometry_msgs.msg  import Twist
+  from nav_msgs.msg import Odometry
+  from math import pow,atan2,sqrt,sin,cos
+  from tf.transformations import euler_from_quaternion
+  import numpy as np 
+  ~~~
+  #!/usr/bin/env python teaches terminal what kind of script source we will run
+  You should import [ROS message types](http://wiki.ros.org/ROS/Tutorials/UnderstandingTopics) as library
+  
+  </br></br>
 + ROS connection :
 
   ~~~
@@ -109,7 +124,7 @@
 ## Result clip using Gazebo
 </br>
   <p align="center">
-  <img src="https://github.com/engcang/image-files/blob/master/turtlebot2/kinematic_1coma1.gif" width="500"/>
+  <img src="https://github.com/engcang/image-files/blob/master/turtlebot2/move2goal.gif" width="500"/>
   </p>
   </br>
   Robot moves to (1,1) position from origin untill close enough
