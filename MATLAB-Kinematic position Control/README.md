@@ -7,7 +7,7 @@
 
 ### Nessecary
 + [< Robotics System Toolbox >](https://kr.mathworks.com/help/robotics/classeslist.html)
-+ <Robotics System Toolbox Support Package for Turtlebot-Based Robots>
++ [< Support Package for Turtlebot-Based Robots >](https://kr.mathworks.com/help/supportpkg/turtlebotrobot/index.html)
 ## Code breaking down
     rosinit('192.168.0.10'); % type your robot's IP
     tbot = turtlebot;
@@ -19,4 +19,4 @@
     odom = rossubscriber('/odom');
 
 This block initialize ROS connection and make nodes subscribes and publishes the messages under topics
-<img src="https://github.com/engcang/image-files/turtlebot2/rqt1.jpg" width="200" position="center">
+<img src="https://github.com/engcang/image-files/blob/master/turtlebot2/rqt1.JPG" width="200" position="center">
