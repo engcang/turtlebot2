@@ -26,5 +26,16 @@
 </br>
 This block initialize ROS connection and make nodes subscribes and publishes the messages under topics
 <p align="center">
-<img src="https://github.com/engcang/image-files/blob/master/turtlebot2/rqt1.JPG" width="800"/>
+<img src="https://github.com/engcang/image-files/blob/master/turtlebot2/rqt1.JPG" width="700"/>
 </p>
+
+~~~
+%% System Parameters
+K1=2;
+K2=2; %gain
+
+
+xt=1;
+yt=1; %xt= target.x, yt = target.y
+rho=sqrt((xt-Ax)^2+(yt-Ay)^2);
+~~~
