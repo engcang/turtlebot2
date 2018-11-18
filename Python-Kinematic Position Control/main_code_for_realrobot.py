@@ -3,11 +3,10 @@ import rospy
 from geometry_msgs.msg  import Twist
 from nav_msgs.msg import Odometry
 from math import pow,atan2,sqrt,sin,cos
-from tf.transformations import euler_from_quaternion, quaternion_from_euler
+from tf.transformations import euler_from_quaternion
 import numpy as np 
 
 class turtlebot():
-
     def __init__(self):
         #Creating our node,publisher and subscriber
         rospy.init_node('turtlebot_controller', anonymous=True)
@@ -23,11 +22,9 @@ class turtlebot():
         self.pose.x = round(self.pose.x, 4)
         self.pose.y = round(self.pose.y, 4)
 
-    def get_distance(self, goal_x, goal_y):
-        distance = sqrt(pow((goal_x - self.pose.x), 2) + pow((goal_y - self.pose.y), 2))
-        return distance
-
     def move2goal(self):
+        K1=0.5
+        K2=0.5
         goal_pose_ = Odometry()
         goal_pose = goal_pose_.pose.pose.position
         goal_pose.x = input("Set your x goal:")
@@ -37,8 +34,6 @@ class turtlebot():
         r = sqrt(pow((goal_pose.x - self.pose.x), 2) + pow((goal_pose.y - self.pose.y), 2))
         while r >= distance_tolerance:
 
-            #Proportional Controller
-            #linear velocity in the x-axis:
             r = sqrt(pow((goal_pose.x - self.pose.x), 2) + pow((goal_pose.y - self.pose.y), 2))
             psi = atan2(goal_pose.y - self.pose.y, goal_pose.x - self.pose.x)
             orientation_list = [self.orient.x, self.orient.y, self.orient.z, self.orient.w]
@@ -50,19 +45,10 @@ class turtlebot():
             if phi < -np.pi:
                 phi = phi + 2*np.pi
 
-            vel_msg.linear.x = 0.3*r*cos(phi)
-            vel_msg.linear.y = 0
-            vel_msg.linear.z = 0
+            vel_msg.linear.x = K1*r*cos(phi)
+            vel_msg.angular.z = -K1*sin(phi)*cos(phi)-(K2*phi)
 
-            #angular velocity in the z-axis:
-            vel_msg.angular.x = 0
-            vel_msg.angular.y = 0
-            vel_msg.angular.z = -0.3*sin(phi)*cos(phi)-(0.4*phi)
-
-            #Publishing our vel_msg
-            print(self.pose.x)
-            print(self.pose.y)
-            print(r)
+            #Publishing input
             self.velocity_publisher.publish(vel_msg)
             self.rate.sleep()
         #Stopping our robot after the movement is over
@@ -74,6 +60,6 @@ if __name__ == '__main__':
    x = turtlebot()
    while 1:
       try:
-       	#Testing our function
         x.move2goal()
-      except rospy.ROSInterruptException: pass
+      except:
+        pass
