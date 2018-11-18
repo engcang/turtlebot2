@@ -13,15 +13,15 @@
 
 ## Code breaking down
 + ROS connection :
-~~~
-    rosinit('192.168.0.10'); % type your robot's IP
-    tbot = turtlebot;
-    resetOdometry(tbot); % Reset robot's Odometry
-    
-    robot = rospublisher('/mobile_base/commands/velocity');
-    velmsg = rosmessage(robot);
-    
-    odom = rossubscriber('/odom');
+> ~~~
+rosinit('192.168.0.10'); % type your robot's IP
+tbot = turtlebot;
+resetOdometry(tbot); % Reset robot's Odometry
+
+robot = rospublisher('/mobile_base/commands/velocity');
+velmsg = rosmessage(robot);
+
+odom = rossubscriber('/odom');
 ~~~
 </br>
 This block initialize ROS connection and make nodes subscribes and publishes the messages under topics
