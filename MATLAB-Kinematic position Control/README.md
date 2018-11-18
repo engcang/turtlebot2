@@ -9,6 +9,7 @@
 + [< Robotics System Toolbox >](https://kr.mathworks.com/help/robotics/classeslist.html)
 + [< Support Package for Turtlebot-Based Robots >](https://kr.mathworks.com/help/supportpkg/turtlebotrobot/index.html)
 ## Code breaking down
+~~~
     rosinit('192.168.0.10'); % type your robot's IP
     tbot = turtlebot;
     resetOdometry(tbot); % Reset robot's Odometry
@@ -17,7 +18,8 @@
     velmsg = rosmessage(robot);
     
     odom = rossubscriber('/odom');
- 
+~~~
+
 
 This block initialize ROS connection and make nodes subscribes and publishes the messages under topics
 <p align="center">
