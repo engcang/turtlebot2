@@ -5,9 +5,11 @@
 + A Stable Target-Tracking Control for Unicycle Mobile Robots, Sung-On Lee, Young-Jo Cho, Myung Hwang-Bo, Bum-Jae You, Sang-Rok Oh, Proceedings of the 2000 IEEE/RSJ International Conference on Intelligent Robots and Systems 
   + Modelling uses velocity input which is proved stable by Lyapunov stability
 
-
+### Nessecary
++ <Robotics System Toolbox>
++ <Robotics System Toolbox Support Package for Turtlebot-Based Robots>
 ## Code breaking down
->    rosinit('192.168.0.10'); % type your robot's IP
+    rosinit('192.168.0.10'); % type your robot's IP
     tbot = turtlebot;
     resetOdometry(tbot); % Reset robot's Odometry
     
@@ -15,4 +17,6 @@
     velmsg = rosmessage(robot);
     
     odom = rossubscriber('/odom');
-> rosinit('IP')
+
+This block initialize ROS connection and make nodes subscribes and publishes the messages under topics
+
