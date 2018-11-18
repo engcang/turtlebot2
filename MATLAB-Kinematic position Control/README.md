@@ -20,5 +20,6 @@
 
 
 This block initialize ROS connection and make nodes subscribes and publishes the messages under topics
-
-<img src="https://github.com/engcang/image-files/blob/master/turtlebot2/rqt1.JPG" width="800" class="center">
+<p align="center">
+<img src="https://github.com/engcang/image-files/blob/master/turtlebot2/rqt1.JPG" width="800"/>
+</p>
