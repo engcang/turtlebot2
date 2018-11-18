@@ -33,7 +33,7 @@
   </p>
 
   </br></br>
-  + System Parameters :
++ System Parameters :
 
   ~~~
   K1=2;
@@ -43,3 +43,5 @@
   yt=1; %xt= target.x, yt = target.y
   rho=sqrt((xt-Ax)^2+(yt-Ay)^2);
   ~~~
+  Input Gains K1 and K2 can differ how fast the robot will move
+  xt and yt is Goal position in X-Y 2D axes system
