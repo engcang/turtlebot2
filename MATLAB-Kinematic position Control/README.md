@@ -96,3 +96,6 @@
   end
   ~~~
 </br>
+<p align="center">
+  <img src="https://github.com/engcang/image-files/blob/master/turtlebot2/kinematic_1coma1.gif" width="500"/>
+</p>
