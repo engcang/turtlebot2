@@ -17,8 +17,7 @@
     velmsg = rosmessage(robot);
     
     odom = rossubscriber('/odom');
-
-
+ 
 
 This block initialize ROS connection and make nodes subscribes and publishes the messages under topics
 <p align="center">
