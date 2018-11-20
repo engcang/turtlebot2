@@ -21,6 +21,7 @@
   ~~~
   $roslaunch turtlebot_bringup minimal.launch
   ~~~
+  on the computer/board connected with turtlebot2
 
 </br></br>
 ## Code breaking down
