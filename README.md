@@ -9,9 +9,9 @@
 + For Turtlebot3 click [here](https://github.com/engcang/turtlebot3)
 + For Clearpath Husky click [here](https://github.com/engcang/husky)
 </br></br>
-● MATLAB version
+### ● MATLAB version
 + [Kinematic position Control](https://github.com/engcang/turtlebot2/tree/master/MATLAB-Kinematic%20position%20Control)
 </br>
 
-● Python version
+### ● Python version
 + [Kinematic position Control](https://github.com/engcang/turtlebot2/tree/master/Python-Kinematic%20Position%20Control)
