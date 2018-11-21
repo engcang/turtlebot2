@@ -28,7 +28,7 @@
 
 + ROS connection :
 
-  ~~~python
+  ~~~diff
   rosinit('192.168.0.10'); % type your robot's IP
   tbot = turtlebot;
   resetOdometry(tbot); % Reset robot's Odometry</code></pre>
