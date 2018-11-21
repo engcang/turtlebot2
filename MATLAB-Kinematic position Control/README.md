@@ -19,7 +19,7 @@
 + [< Support Package for Turtlebot-Based Robots >](https://kr.mathworks.com/help/supportpkg/turtlebotrobot/index.html)
 + Should start robot before running the MATLAB code by
   ~~~
-  $roslaunch turtlebot_bringup minimal.launch
+  $ roslaunch turtlebot_bringup minimal.launch
   ~~~
   on the computer/board connected with turtlebot2
 
