@@ -16,7 +16,7 @@
 
 ## Code breaking down
 + Libraries
-  ~~~
+  ~~~python
   #!/usr/bin/env python
   import rospy
   from geometry_msgs.msg  import Twist
@@ -32,7 +32,7 @@
   </br></br>
 + ROS connection :
 
-  ~~~
+  ~~~python
   class turtlebot():
     def __init__(self):
         #Creating our node,publisher and subscriber
@@ -52,81 +52,73 @@
   </br>
   This code block initializes ROS connection and make nodes subscribe and publishe the messages </br>
   under topics like graph followed when _**x = turtlebot()**_ line inherit class </br>
-  <em>**callback**</em> function is automatically implemented whenever <em>**'Odometry'**</em> data comes from <em>**'/odom'**</em> topic  
+  _**callback**_ function is automatically implemented whenever _**'Odometry'**_ data comes from _**'/odom'**_ topic  
   <p align="center">
   <img src="https://github.com/engcang/image-files/blob/master/turtlebot2/rqt2.JPG" width="700"/>
   </p>
 
   </br></br>
-+ System Parameters :
++ Function :
 
-  ~~~
-  K1=2;
-  K2=2; %gain
+  ~~~python
+  def move2goal(self):
+        K1=0.5
+        K2=0.5
+        goal_pose_ = Odometry()
+        goal_pose = goal_pose_.pose.pose.position
+        goal_pose.x = input("Set your x goal:")
+        goal_pose.y = input("Set your y goal:")
+        distance_tolerance = input("Set your tolerance:")
+        vel_msg = Twist()
+        r = sqrt(pow((goal_pose.x - self.pose.x), 2) + pow((goal_pose.y - self.pose.y), 2))
+        while r >= distance_tolerance:
 
-  xt=1;
-  yt=1; %xt= target.x, yt = target.y
-  rho=sqrt((xt-Ax)^2+(yt-Ay)^2);
+            r = sqrt(pow((goal_pose.x - self.pose.x), 2) + pow((goal_pose.y - self.pose.y), 2))
+            psi = atan2(goal_pose.y - self.pose.y, goal_pose.x - self.pose.x)
+            orientation_list = [self.orient.x, self.orient.y, self.orient.z, self.orient.w]
+            (roll, pitch, yaw) = euler_from_quaternion (orientation_list)
+            theta = yaw
+            phi = theta - psi
+            if phi > np.pi:
+                phi = phi - 2*np.pi
+            if phi < -np.pi:
+                phi = phi + 2*np.pi
+
+            vel_msg.linear.x = K1*r*cos(phi)
+            vel_msg.angular.z = -K1*sin(phi)*cos(phi)-(K2*phi)
+
+            #Publishing input
+            self.velocity_publisher.publish(vel_msg)
+            self.rate.sleep()
+        #Stopping our robot after the movement is over
+        vel_msg.linear.x = 0
+        vel_msg.angular.z =0
+        self.velocity_publisher.publish(vel_msg)
   ~~~
-  Input Gains K1 and K2 can differ how fast the robot will move
-  xt and yt is Goal position in X-Y 2D axes system
+  Input Gains K1 and K2 can differ how fast the robot will move</br>
+  goal_pose.x and y gets the wanted position of robot under Odometry.pose.pose.position message type from [ROS](http://wiki.ros.org/msg) </br>
+  1.Using the modelling of the paper above, calculated the input by rho(distance between robot and goal position) and phi (subtraction between robot direction and direction from origin to goal position under World coordinate)
+  
+  2.send input to robot via ROS untill get closed to goal position within tolerance (gets input from the user in meter unit)
+  
+  3.When get close enough, stop robot via sending '0' velocity
 
 </br></br>
 
-+ Calculating input :
++ Main part :
 
+  ~~~python
+  if __name__ == '__main__':
+   x = turtlebot()
+   while 1:
+      try:
+        x.move2goal()
+      except:
+        pass
   ~~~
-  while 1
-  if rho >=0.02
-    rho=sqrt((xt-Ax)^2+(yt-Ay)^2);
-    psi=atan2(yt-Ay,xt-Ax);
-    phi=theta-psi;
-        if phi > pi
-        phi = phi - 2*pi;
-    end
-    if phi < -pi
-        phi = phi + 2*pi;
-    end % for robot angle range
-
-    velmsg.Linear.X = K1*rho*cos(phi);
-    velmsg.Angular.Z = -K1*sin(phi)*cos(phi)-K2*phi;
-
-    if velmsg.Linear.X >= 0.7
-        velmsg.Linear.X=0.7;
-    end
-    if velmsg.Linear.X <= -0.7
-        velmsg.Linear.X=-0.7;
-    end
-    if velmsg.Angular.Z >= 2
-        velmsg.Linear.Z=2;
-    end
-    if velmsg.Angular.Z <= -2
-        velmsg.Angular.Z=-2;
-    end % saturation for robot velocity maximum range
-    
-    send(robot,velmsg); %sending input into real robot via ROS
-    
-    odomdata = receive(odom,3);
-    pose = odomdata.Pose.Pose;
-    Ax = pose.Position.X;
-    Ay = pose.Position.Y;
-    quat = pose.Orientation;
-    angles = quat2eul([quat.W quat.X quat.Y quat.Z]);
-    theta = angles(1);  %update robot's position information
-  else
-    velmsg.Linear.X=0;
-    velmsg.Angular.Z=0;
-    send(robot,velmsg);
-    break;
-  end
-  end
-  ~~~
+  After inherit **turtlebot()** class, continuously move robot to wanted position
   </br>
-  1.Using the modelling of the paper above, calculated the input by rho(distance between robot and goal position) and phi (subtraction between robot direction and direction from origin to goal position under World coordinate)
-  
-  2.and then saturate the input into bound which is the hardware specification of Turtlebot2
-  
-  3.send input to robot via ROS untill get closed to goal position within tolerance (0.02 meter in this code)
+ 
   
   </br>
 ## Result clip using Gazebo
