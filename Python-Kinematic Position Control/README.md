@@ -96,7 +96,7 @@
         self.velocity_publisher.publish(vel_msg)
   ~~~
   Input Gains K1 and K2 can differ how fast the robot will move</br>
-  goal_pose.x and y gets the wanted position of robot under Odometry.pose.pose.position message type from [ROS](http://wiki.ros.org/msg) </br>
+  goal_pose.x and y gets the wanted position of robot under Odometry.pose.pose.position message type from [ROS msg type](http://wiki.ros.org/msg) </br>
   1.Using the modelling of the paper above, calculated the input by rho(distance between robot and goal position) and phi (subtraction between robot direction and direction from origin to goal position under World coordinate)
   
   2.send input to robot via ROS untill get closed to goal position within tolerance (gets input from the user in meter unit)
@@ -116,7 +116,7 @@
       except:
         pass
   ~~~
-  After inherit **turtlebot()** class, continuously move robot to wanted position
+  After inherit **turtlebot()** class, continuously moves robot to wanted position
   </br>
  
   
