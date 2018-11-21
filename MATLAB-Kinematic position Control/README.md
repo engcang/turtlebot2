@@ -18,7 +18,7 @@
 + [< Robotics System Toolbox >](https://kr.mathworks.com/help/robotics/classeslist.html)
 + [< Support Package for Turtlebot-Based Robots >](https://kr.mathworks.com/help/supportpkg/turtlebotrobot/index.html)
 + Should start robot before running the MATLAB code by
-  ~~~Linux
+  ~~~
   $ roslaunch turtlebot_bringup minimal.launch
   ~~~
   on the computer/board connected with turtlebot2
@@ -28,7 +28,7 @@
 
 + ROS connection :
 
-  ~~~Ruby
+  ~~~MATLAB
   rosinit('192.168.0.10'); % type your robot's IP
   tbot = turtlebot;
   resetOdometry(tbot); % Reset robot's Odometry
@@ -47,7 +47,7 @@
   </br></br>
 + System Parameters :
 
-  ~~~
+  ~~~MATLAB
   K1=2;
   K2=2; %gain
 
@@ -62,7 +62,7 @@
 
 + Calculating input :
 
-  ~~~
+  ~~~MATLAB
   while 1
   if rho >=0.02
     rho=sqrt((xt-Ax)^2+(yt-Ay)^2);
