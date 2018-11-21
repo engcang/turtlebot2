@@ -28,10 +28,10 @@
 
 + ROS connection :
 
-  ~~~diff
+  ~~~ruby
   rosinit('192.168.0.10'); % type your robot's IP
   tbot = turtlebot;
-  resetOdometry(tbot); % Reset robot's Odometry</code></pre>
+  resetOdometry(tbot); % Reset robot's Odometry
 
   robot = rospublisher('/mobile_base/commands/velocity');
   velmsg = rosmessage(robot);
