@@ -18,7 +18,7 @@
 + [< Robotics System Toolbox >](https://kr.mathworks.com/help/robotics/classeslist.html)
 + [< Support Package for Turtlebot-Based Robots >](https://kr.mathworks.com/help/supportpkg/turtlebotrobot/index.html)
 + Should start robot before running the MATLAB code by
-  ~~~
+  ~~~Linux
   $ roslaunch turtlebot_bringup minimal.launch
   ~~~
   on the computer/board connected with turtlebot2
@@ -28,7 +28,7 @@
 
 + ROS connection :
 
-  ~~~ruby
+  ~~~Ruby
   rosinit('192.168.0.10'); % type your robot's IP
   tbot = turtlebot;
   resetOdometry(tbot); % Reset robot's Odometry
