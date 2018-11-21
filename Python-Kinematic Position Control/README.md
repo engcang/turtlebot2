@@ -50,10 +50,11 @@
         self.pose.y = round(self.pose.y, 4)
   ~~~
   </br>
-  This code block initializes ROS connection and make nodes subscribes and publishes the messages under topics </br>
-  when *x = turtlebot()* line inherit class like graph followed
+  This code block initializes ROS connection and make nodes subscribe and publishe the messages </br>
+  under topics like graph followed when *x = turtlebot()* line inherit class </br>
+  *callback* function is automatically implemented whenever *'Odometry'* data comes from *'/odom'* topic  
   <p align="center">
-  <img src="" width="700"/>
+  <img src="https://github.com/engcang/image-files/blob/master/turtlebot2/rqt2.JPG" width="700"/>
   </p>
 
   </br></br>
