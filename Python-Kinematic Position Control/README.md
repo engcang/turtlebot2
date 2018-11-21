@@ -25,7 +25,7 @@
   from tf.transformations import euler_from_quaternion
   import numpy as np 
   ~~~
-  #!/usr/bin/env python teaches terminal what kind of script source we will run
+  '#!/usr/bin/env python' teaches terminal what kind of script source we will run
   
   You should import [ROS message types](http://wiki.ros.org/ROS/Tutorials/UnderstandingTopics) as library
   
@@ -33,17 +33,25 @@
 + ROS connection :
 
   ~~~
-  rosinit('192.168.0.10'); % type your robot's IP
-  tbot = turtlebot;
-  resetOdometry(tbot); % Reset robot's Odometry</code></pre>
+  class turtlebot():
+    def __init__(self):
+        #Creating our node,publisher and subscriber
+        rospy.init_node('turtlebot_controller', anonymous=True)
+        self.velocity_publisher = rospy.Publisher('/mobile_base/commands/velocity', Twist, queue_size=10)
+        self.pose_subscriber = rospy.Subscriber('/odom', Odometry, self.callback)
+        self.pose = Odometry()
+        self.rate = rospy.Rate(10)
 
-  robot = rospublisher('/mobile_base/commands/velocity');
-  velmsg = rosmessage(robot);
-
-  odom = rossubscriber('/odom');
+    #Callback function implementing the pose value received
+    def callback(self, data):
+        self.pose = data.pose.pose.position
+        self.orient = data.pose.pose.orientation
+        self.pose.x = round(self.pose.x, 4)
+        self.pose.y = round(self.pose.y, 4)
   ~~~
   </br>
-  This block initialize ROS connection and make nodes subscribes and publishes the messages under topics
+  This code block initializes ROS connection and make nodes subscribes and publishes the messages under topics 
+  when __x = turtlebot()__ line inherit class like graph followed
   <p align="center">
   <img src="https://github.com/engcang/image-files/blob/master/turtlebot2/rqt1.JPG" width="700"/>
   </p>
