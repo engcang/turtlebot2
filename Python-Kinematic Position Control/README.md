@@ -128,3 +128,7 @@
   </p>
   </br>
   Robot moves to (1,1) position from origin untill close enough
+  Gazebo simulation can be implemented as above clip by
+  ~~~shell
+  $ roslaunch turtlebot_gazebo turtlebot_world.launch
+  ~~~
