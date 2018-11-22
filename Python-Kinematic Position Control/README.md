@@ -51,8 +51,8 @@
   ~~~
   </br>
   This code block initializes ROS connection and make nodes subscribe and publishe the messages </br>
-  under topics like graph followed when _***x = turtlebot()***_ line inherit class </br>
-  _**callback**_ function is automatically implemented whenever _**'Odometry'**_ data comes from _**'/odom'**_ topic  
+  under topics like graph followed when **x = turtlebot()** line inherit class </br>
+  **callback** function is automatically implemented whenever **'Odometry'** data comes from **'/odom'** topic  
   <p align="center">
   <img src="https://github.com/engcang/image-files/blob/master/turtlebot2/rqt2.JPG" width="700"/>
   </p>
