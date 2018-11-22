@@ -127,7 +127,7 @@
   <img src="https://github.com/engcang/image-files/blob/master/turtlebot2/move2goal.gif" width="500"/>
   </p>
   </br>
-  Robot moves to (1,1) position from origin untill close enough
+  Robot moves to (1,1) position from origin untill close enough </br>
   Gazebo simulation can be implemented as above clip by
   ~~~shell
   $ roslaunch turtlebot_gazebo turtlebot_world.launch
